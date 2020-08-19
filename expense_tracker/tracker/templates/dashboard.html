@@ -1,0 +1,99 @@
+{% extends 'home.html' %} {% block body %}
+	<div class="container" >
+	  <h1 class="display-4">Wallet</h1>
+	  <a href="/wallet/"><button type="button" class="btn btn-outline-primary">Create Wallet</button><br><br></a>
+		  <div class="card" >
+		  <div class="card-body">
+			    <table class="table">
+		  <thead>
+		    <tr>
+		      <th scope="col">Wallet name</th>
+		      <th scope="col">Balance Amount</th>
+		      <th scope="col">Last Transaction</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	{% for wallet in all_wallet %}
+			    <tr>
+			      <td>{{ wallet.name }}</td>
+			      <td>{{ wallet.balance }}</td>
+			      <td>{{ wallet.last_transaction }}</td>
+			    </tr>
+			    {% endfor %}
+		  </tbody>
+		</table>
+		    
+		  </div>
+	</div>
+</div>
+<br><br>
+	<div class="container" style="display: flex; justify-content: space-around;">
+		<div class="container" style="border:1px solid grey;">
+	  <h3 class="">Expense</h1>
+	  <a href="/expense/"><button type="button" class="btn btn-outline-primary">Create Expense</button><br><br></a>
+		  <div class="card" >
+		  <div class="card-body">
+			    <table class="table" style="padding-bottom: 5px ">
+		  <thead>
+		    <tr>
+		      <th scope="col">Title</th>
+		      <th scope="col">Description</th>
+		      <th scope="col">Amount</th>
+		      <th scope="col">Timestamp</th>
+		      <th scope="col">Wallet</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	{% for expense in all_expense %}
+			    <tr>
+			      
+			      <td>{{ expense.title }}</td>
+			      <td>{{ expense.description }}</td>
+			      <td>{{ expense.amount }}</td>
+			      <td>{{ expense.timestamp }}</td>
+			      <td>{{ expense.wallet }}</td>
+
+			    </tr>
+			    {% endfor %}
+		  </tbody>
+		</table>
+		    
+		  </div>
+	</div>
+</div>
+		<div class="container" style="border:1px solid grey;">
+	  <h1 class="">Income</h1>
+	  <a href="/income/"><button type="button" class="btn btn-outline-primary">Create Income</button><br><br></a>
+		  <div class="card" >
+		  <div class="card-body">
+			    <table class="table">
+		  <thead>
+		    <tr>
+		      <th scope="col">Title</th>
+		      <th scope="col">Description</th>
+		      <th scope="col">Amount</th>
+		      <th scope="col">Timestamp</th>
+		      <th scope="col">Wallet</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	{% for income in all_income %}
+			    <tr>
+			      
+			      <td>{{ income.title }}</td>
+			      <td>{{ income.description }}</td>
+			      <td>{{ income.amount }}</td>
+			      <td>{{ income.timestamp }}</td>
+			      <td>{{ income.wallet }}</td>
+
+			    </tr>
+			    {% endfor %}
+		  </tbody>
+		</table>
+		    
+		  </div>
+	</div>
+</div>
+	</div>
+
+{% endblock %}

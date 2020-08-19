@@ -1,0 +1,52 @@
+{% extends 'home.html' %} {% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <br>
+            
+            <div class="sub-head mt-4 mb-2">
+                <h4>Create Wallet</h4>
+            </div>
+            <form action="/create_wallet/" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Name</label>
+                    <input class="form-control" type="text" name="name" placeholder="Wallet Name">
+                </div>
+                <div class="form-group">
+                    <label>Amount</label>
+                    <input class="form-control" type="number" name="balance" placeholder="Initial Amount">
+                </div>
+                <button type="submit" class="btn btn-success" style="width: 170px;">Create Wallet</button>
+            </form><br>
+            <hr>
+            <div class="sub-head mt-4 mb-2">
+                <h4>All Wallets</h4>
+            </div>
+            <table class="table table-striped">
+                <tr>
+                    <th>Name</th>
+                    <th>Balance</th>
+                    <th>Last Transaction</th>
+                </tr>
+                {% for wallet in all_wallet %}
+                    <tr>
+                        <td>{{ wallet.name }}</td>
+                        <td>{{ wallet.balance }}</td>
+                        <td>{{ wallet.last_transaction }}</td>
+                        <td><a href="/delete_wallet/{{wallet.id}}/">Delete</a></td>
+						<td><a href="/edit_wallet/{{wallet.id}}/">Edit</button></td>
+						</tr>
+                    </tr>
+                {% endfor %}
+            </table>
+            <br><br>
+            <hr>
+            <br>
+            
+        </div>
+        <div class="col-md-2"></div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'home.html' %}
+{% block body %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<div class="heading mt-4">
+					<h2>Wallets</h2>
+				</div>
+				<div class="sub-head mt-4 mb-2">
+					<h4>Edit your Wallet</h4>
+				</div>
+				<form action="/edit_wallet/{{wallet_object.id}}/" method="POST">
+					{% csrf_token %}
+					<div class="form-group">
+						<label>Name</label>
+						<input class="form-control" type="text" name="name" value="{{wallet_object.name}}"placeholder="Wallet Name">
+					</div>
+					<div class="form-group">
+						<label>Amount</label>
+						<input class="form-control" type="number" name="balance" value="{{wallet_object.balance}}">
+					</div>
+					<button type="primary" class="btn btn-secondary">Save</button>
+				</form>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+	</div>
+{% endblock %}

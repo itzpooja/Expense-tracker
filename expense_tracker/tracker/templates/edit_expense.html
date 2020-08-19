@@ -1,0 +1,32 @@
+{% extends 'home.html' %} {% block body %}
+<div class="container">
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<div class="heading mt-4">
+					<h2>Expense</h2>
+				</div>
+				<div class="sub-head mt-4 mb-2">
+					<h4>Edit Expenses</h4>
+				</div>
+				<form action="/edit_expense/{{expense.id}}/" method="POST">
+                {% csrf_token %}
+  <div class="form-group">
+    <label >Title</label>
+    <input type="text" name="title" class="form-control" value="{{expense.title}}">
+  </div>
+  <div class="form-group">
+    <label >Amount</label>
+    <input type="number" class="form-control" name="amount" value="{{expense.amount}}">
+  </div>
+  <div class="form-group">
+    <label >Description</label>
+    <textarea name="description" value="{{expense.description}}"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+	</div>
+{% endblock %}

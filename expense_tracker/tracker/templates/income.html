@@ -1,0 +1,71 @@
+{% extends 'home.html' %} {% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <br>
+            
+            <div class="sub-head mt-4 mb-2">
+                <h4>Create Income</h4>
+            </div>
+            <form action="/create_income/" method="POST">
+                {% csrf_token %}
+  <div class="form-group">
+    <label >Title</label>
+    <input type="text" name="title" class="form-control">
+  </div>
+  <div class="form-group">
+    <label >Amount</label>
+    <input type="number" class="form-control" name="amount">
+  </div>
+  <div class="form-group">
+    <label>Wallet</label>
+    <select name="wallet" >
+            {% for wallet in all_wallet %}
+        <option value="{{wallet.id}}">{{wallet.name}}
+        </option>
+        {% endfor %}
+    </select>
+  </div>
+  <div class="form-group">
+    <label >Description</label>
+    <textarea name="description"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+            <hr>
+            <div class="sub-head mt-4 mb-2">
+                <h4>All Income</h4>
+            </div>
+            <table class="table table-striped">
+                <tr>
+                    <th>Title</th>
+                    <th>description</th>
+                    <th>Amount</th>
+                    <th>Timestamp</th>
+                    <th>Wallet</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                {% for income in all_income %}
+                    <tr>
+                        <td>{{ income.title }}</td>
+                        <td>{{ income.description }}</td>
+                        <td>{{ income.amount }}</td>
+                        <td>{{ income.timestamp }}</td>
+                        <td>{{ income.wallet }}</td>
+                        <td><a href="/delete_income/{{income.id}}/">Delete</a></td>
+						<td><a href="/edit_income/{{income.id}}/">Edit</button></td>
+						</tr>
+                    </tr>
+                {% endfor %}
+            </table>
+            <br><br>
+            <hr>
+            <br>
+            
+        </div>
+        <div class="col-md-2"></div>
+</div>
+</div>
+{% endblock %}
